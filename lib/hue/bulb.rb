@@ -163,7 +163,7 @@ module Hue
     def flash
       self.alert = 'select'
       # immediately update to expected state
-      @status['state']['alert'] = NONE
+      status['state']['alert'] = NONE
     end
 
     # transition time in seconds
@@ -197,9 +197,9 @@ module Hue
       end
     end
 
-    def set_status(settings, key = nil)
+    def set_status(settings, start_key = nil)
       if @status
-        status = key ? @status[key] : @status
+        status = start_key ? @status[start_key] : @status
         settings.each do |key, value|
           status[key.to_s] = value
         end
