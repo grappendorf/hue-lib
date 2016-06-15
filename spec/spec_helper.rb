@@ -127,7 +127,7 @@ TEST_BRIDGE_URI = 'http://localhost/api'
 TEST_APPLICATION_UUID = 'application_uuid'
 
 def test_bridge
-  Hue::Bridge.new(TEST_APPLICATION_UUID, TEST_BRIDGE_URI)
+  Hue::Bridge.new(TEST_BRIDGE_URI, TEST_APPLICATION_UUID)
 end
 
 def api_reply_json(named)

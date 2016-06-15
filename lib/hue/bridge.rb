@@ -9,7 +9,7 @@ module Hue
 
     attr_reader :application_id, :bridge_uri
 
-    def initialize(application_id, bridge_uri)
+    def initialize(bridge_uri, application_id = nil)
       @application_id = application_id
       @bridge_uri = bridge_uri
     end
@@ -54,8 +54,8 @@ module Hue
     # end
 
     def register
-      create(URI.parse(bridge_uri),
-             {"username" => application_id, "devicetype" => Hue.device_type})
+      result = create(URI.parse(bridge_uri), {"devicetype" => Hue.device_type})
+      @application_id = result.first['success']['username']
     end
 
     def unregister
